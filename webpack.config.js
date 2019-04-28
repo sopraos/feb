@@ -72,11 +72,11 @@ module.exports = env => {
 		mode: isProdMode ? 'production' : 'development',
 		context: __dirname,
 		entry: {
-			'js/app': './assets/js/moukateCss.js',
-			'css/app': './assets/scss/moukateCss.scss',
+			'js/feb': './assets/js/feb.js',
+			'css/feb': './assets/scss/feb.scss',
 		},
 		output: {
-			filename: isProdMode ? '[name].[chunkhash:8].js' : '[name].js',
+			filename: isProdMode ? '[name].min.js' : '[name].js',
 			path: setOutputPath,
 			pathinfo: !isProdMode,
 			publicPath: isProdMode ? setPublicPath : devServerUrl
@@ -158,12 +158,12 @@ module.exports = env => {
 		plugins: [
 			// Extrait css
 			new MiniCssExtractPlugin({
-				filename: isProdMode ? '[name].[contenthash:8].css' : '[name].css',
-				chunkFilename: isProdMode ? '[id].[contenthash:8].css' : '[id].css',
+				filename: isProdMode ? '[name].min.css' : '[name].css',
+				chunkFilename: isProdMode ? '[id].min.css' : '[id].css',
 			}),
 
 			// Supprimer les entrées inutilisées
-			new DeleteUnused(['css/app']),
+			new DeleteUnused(['css/feb']),
 
 			// Manifest
 			new ManifestPlugin({
