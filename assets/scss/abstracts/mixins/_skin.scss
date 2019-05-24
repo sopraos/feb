@@ -1,0 +1,20 @@
+// Mixin - SKIN
+// ==|====================
+
+// Gradient
+// ==|====================
+@mixin gradient-bg($color) {
+	background-color: $color;
+}
+
+// Transition
+// ==|====================
+@mixin transition($transition...) {
+	@if length($transition) == 0 {
+		transition: $transition-base;
+	}
+
+	@else {
+		transition: $transition;
+	}
+}
