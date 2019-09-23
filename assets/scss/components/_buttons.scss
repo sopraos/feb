@@ -10,7 +10,7 @@
 	cursor: pointer;
 	font-weight: $button-font-weight;
 	line-height: $button-line-height;
-	border-radius: rem($button-border-radius);
+	@include border-radius($button-border-radius);
 	text-align: center;
 	user-select: none;
 	border: $border-width solid transparent;

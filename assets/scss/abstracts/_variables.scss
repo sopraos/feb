@@ -93,6 +93,7 @@ $theme-colors: map-merge(
 	"success":    $success,
 	"warning":    $warning,
 	"danger":     $danger,
+	"info":      $blue-lighter,
 	"light":      $light,
 	"dark":       $dark
 ),
@@ -226,7 +227,7 @@ $alert-padding-x:					rem(20) !default;
 $alert-margin-bottom:			rem(16) !default;
 
 $alert-border-width:			$border-width !default;
-$alert-border-radius:			rem($border-radius) !default;
+$alert-border-radius:			$border-radius !default;
 $alert-link-font-weight:	$font-weight-bold !default;
 
 $alert-bg-level:					-10 !default;

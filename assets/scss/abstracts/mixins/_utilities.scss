@@ -8,21 +8,21 @@
 }
 
 @mixin border-top-radius($radius) {
-	border-top-left-radius: $radius;
-	border-top-right-radius: $radius;
+	border-top-left-radius: rem($radius);
+	border-top-right-radius: rem($radius);
 }
 
 @mixin border-right-radius($radius) {
-	border-top-right-radius: $radius;
-	border-bottom-right-radius: $radius;
+	border-top-right-radius: rem($radius);
+	border-bottom-right-radius: rem($radius);
 }
 
 @mixin border-bottom-radius($radius) {
-	border-bottom-right-radius: $radius;
-	border-bottom-left-radius: $radius;
+	border-bottom-right-radius: rem($radius);
+	border-bottom-left-radius: rem($radius);
 }
 
 @mixin border-left-radius($radius) {
-	border-top-left-radius: $radius;
-	border-bottom-left-radius: $radius;
+	border-top-left-radius: rem($radius);
+	border-bottom-left-radius: rem($radius);
 }
