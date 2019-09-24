@@ -1,0 +1,5 @@
+{
+  "build/css/docs.css": "/build/css/docs.min.css",
+  "build/css/feb.css": "/build/css/feb.min.css",
+  "build/js/feb.js": "/build/js/feb.min.js"
+}
