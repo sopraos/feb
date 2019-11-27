@@ -239,10 +239,14 @@ $alert-color-level:       6 !default;
 $card-spacer-y:				.75rem !default;
 $card-spacer-x:				rem(20) !default;
 
+$card-border-width:   $border-width !default;
 $card-border-radius:	$border-radius !default;
+$card-border-color:		rgba($black, .125) !default;
 
 $card-color:					null !default;
 $card-bg:							$white !default;
+
+$card-inner-border-radius:	calc(#{rem($card-border-radius)} - #{$card-border-width}) !default;
 
 // 4. Grille
 // ==|========================================================================

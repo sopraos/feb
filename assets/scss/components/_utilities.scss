@@ -60,3 +60,9 @@
 		.align-self#{$infix}-stretch { align-self: stretch !important; }
 	}
 }
+
+// Border radius
+// ==|====================
+.rounded-circle {
+	border-radius: 50% !important;
+}
