@@ -234,6 +234,12 @@ $alert-bg-level:					-10 !default;
 $alert-border-level:      -9 !default;
 $alert-color-level:       6 !default;
 
+// Close
+$close-font-size:					rem($font-size-base) * 1.5 !default;
+$close-font-weight:				$font-weight-bold !default;
+$close-color:							$black !default;
+$close-text-shadow:				0 rem(1) 0 $white !default;
+
 // 3-4. Cards
 // ==|========================
 $card-spacer-y:				.75rem !default;

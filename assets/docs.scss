@@ -1,0 +1,219 @@
+@charset 'UTF-8';
+
+/*
+	Feb. CSS & JS Framework
+	Version 1.0.1
+	Copyright (c) 2018, Sopraos.
+	License: MIT
+*/
+
+@import './scss/abstracts/functions';
+@import './scss/abstracts/variables';
+@import './scss/abstracts/mixins';
+
+// UTILS CORE
+// ===================================================
+$colors-palette: () !default;
+$colors-palette: map-merge(
+(
+	"black":					$black,
+	"white":					$white,
+	"grey-darkest":		$grey-darkest,
+	"grey-darker":		$grey-darker,
+	"grey-dark":			$grey-dark,
+	"grey":						$grey,
+	"grey-light":			$grey-light,
+	"grey-lighter":		$grey-lighter,
+	"grey-lightest":	$grey-lightest,
+	// Red
+	"red-darkest":		$red-darkest,
+	"red-darker":		$red-darker,
+	"red-dark":			$red-dark,
+	"red":						$red,
+	"red-light":			$red-light,
+	"red-lighter":		$red-lighter,
+	"red-lightest":	$red-lightest,
+	// Orange
+	"orange-darkest":		$orange-darkest,
+	"orange-darker":		$orange-darker,
+	"orange-dark":			$orange-dark,
+	"orange":						$orange,
+	"orange-light":			$orange-light,
+	"orange-lighter":		$orange-lighter,
+	"orange-lightest":	$orange-lightest,
+	// Green
+	"green-darkest":		$green-darkest,
+	"green-darker":		$green-darker,
+	"green-dark":			$green-dark,
+	"green":						$green,
+	"green-light":			$green-light,
+	"green-lighter":		$green-lighter,
+	"green-lightest":	$green-lightest,
+	// Blue
+	"blue-darkest":		$blue-darkest,
+	"blue-darker":		$blue-darker,
+	"blue-dark":			$blue-dark,
+	"blue":						$blue,
+	"blue-light":			$blue-light,
+	"blue-lighter":		$blue-lighter,
+	"blue-lightest":	$blue-lightest
+),
+$colors-palette
+);
+
+
+@mixin doccolors($background) {
+	color: color-mk($background);
+	background-color: $background !important;
+}
+
+.docs.container,
+.docs.container-fluid { padding: 16px; }
+
+// HEADER
+// ===================================================
+.header {
+	position: sticky;
+	display: flex;
+	align-items: center;
+	height: 50px;
+	right: 0;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	border-bottom: 1px solid #ebf0f4;
+	background-color: #fff;
+}
+
+// SIDEBAR
+// ===================================================
+.sidebar {
+	position: sticky;
+	top: 64px;
+	z-index: 1000;
+	height: calc(100vh - 64px);
+
+	.doc-links {
+		font-size: 14px;
+
+		p {
+			padding: 4px 24px;
+			margin-bottom: 8px;
+			font-size: 12px;
+			letter-spacing: .6px;
+			color: #b8c2cc;
+			text-transform: uppercase;
+		}
+	}
+
+	// Item
+	// .doc-item {}
+
+	// Liens
+	.doc-link {
+		display: block;
+		padding: 4px 24px;
+		color: #3d4852;
+		text-decoration: none;
+	}
+}
+
+// MAIN - Content
+// ===================================================
+.section { margin-bottom: 40px; }
+
+// Docs examples
+.example {
+	position: relative;
+	padding: 1rem;
+	margin: 1rem rem(-15) 0;
+	border: solid #ebf0f4;
+	border-width: .2rem 0 0;
+
+	@include media-breakpoint-up(s) {
+		padding: 1.5rem;
+		margin-right: 0;
+		margin-left: 0;
+		border-width: .2rem;
+	}
+}
+
+.example-container {
+	min-width: 16rem;
+	max-width: 25rem;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+// Couleurs
+// ===|===============
+@each $color, $value in $colors-palette {
+	.bg-#{$color} {
+		@include doccolors($value);
+	}
+}
+
+.doc-color {
+	position: relative;
+	margin-top: rem(32);
+	margin-bottom: rem(32);
+	border-radius: rem(4);
+	overflow: hidden;
+
+	.color-h {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		padding: rem(4) rem(12);
+		font-size: rem(14);
+		color: #22292f;
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);
+
+		.txt {
+			font-weight: 600;
+			text-transform: uppercase;
+			color: #fff;
+		}
+
+		.content {
+			display: flex;
+			justify-content: space-between;
+
+			span {
+				&:first-child {
+					font-weight: 600;
+					margin-right: rem(8);
+				}
+				&:nth-child(2) { text-transform: uppercase; }
+			}
+		}
+	}
+
+	.color-c {
+		display: flex;
+		.d:nth-child(2) { text-transform: uppercase; }
+	}
+
+	.color-b {
+		flex: 1 1 0%;
+		padding: rem(16) rem(12);
+		font-weight: 600;
+		font-size: rem(14);
+
+		div {
+			&:first-child { margin-bottom: rem(8); }
+		}
+	}
+}
+
+// Couleurs
+// ===|===============
+.example-row .row { margin-bottom: rem(16); }
+
+.example-row .row > .col,
+.example-row .row > [class^="col-"] {
+	height: 40px;
+	padding: rem(12);
+	background-color: $grey;
+	@include border-radius(20);
+}
