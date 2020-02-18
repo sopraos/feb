@@ -314,3 +314,146 @@ textarea.form-control {
 .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
 	@include border-left-radius(0);
 }
+
+.custom-control {
+	position: relative;
+	display: block;
+	min-height: 24px;
+	padding-left: 24px;
+}
+
+.custom-control-input {
+	position: absolute;
+	left: 0;
+	z-index: -1;
+	width: 16px;
+	height: 20px;
+	opacity: 0;
+
+	&:checked ~ .custom-control-label::before {
+		color: $control-indicator-checked-color;
+		border-color: $control-indicator-checked-border-color;
+
+		@include gradient-bg($control-indicator-checked-bg);
+	}
+
+	&:focus ~ .custom-control-label::before {
+		box-shadow: $control-indicator-focus-box-shadow;
+	}
+
+	&:focus:not(:checked) ~ .custom-control-label::before {
+		border-color: $control-indicator-focus-border-color;
+	}
+
+	&:not(:disabled):active ~ .custom-control-label::before {
+		color: white;
+		background-color: $control-indicator-active-bg;
+		border-color: $control-indicator-active-border-color;
+	}
+
+	&[disabled],
+	&:disabled {
+		~ .custom-control-label {
+			color: #6c757d;
+
+			&::before {
+				background-color: #e9ecef;
+			}
+		}
+	}
+}
+
+.custom-control-label {
+	position: relative;
+	margin-bottom: 0;
+	vertical-align: top;
+
+	// Background-color
+	&::before {
+		position: absolute;
+		top: rem(4);
+		left: rem(-24);
+		display: block;
+		width: rem(16);
+		height: rem(16);
+		pointer-events: none;
+		content: "";
+		background-color: #fff;
+		border: #808183 solid 1px;
+	}
+
+	//
+	&::after {
+		position: absolute;
+		top: rem(4);
+		left: rem(-24);
+		display: block;
+		width: rem(16);
+		height: rem(16);
+		content: "";
+		background: no-repeat 50% / 50% 50%;
+	}
+}
+
+// Radios
+.form-radio {
+	.custom-control-label::before {
+		border-radius: 50%;
+	}
+
+	.custom-control-input:checked ~ .custom-control-label {
+		&::after {
+			background-image: escape-svg($radio-indicator-icon-checked);
+		}
+	}
+
+	.custom-control-input:disabled {
+		&:checked ~ .custom-control-label::before {
+			background-color: $control-indicator-checked-disabled-bg;
+		}
+	}
+}
+
+// Switches
+.form-switch {
+	padding-left: 36px;
+
+	.custom-control-label {
+		&::before {
+			left: -(36px);
+			width: $switch-width;
+			pointer-events: all;
+			border-radius: $switch-indicator-border-radius;
+		}
+
+		&::after {
+			top: add((rem(8)) / 2, $border-width * 1);
+			left: add(-(rem(36)), $border-width * 1);
+			width: subtract(1rem, 1px * 4);
+			height: subtract(1rem, 1px * 4);
+			background-color: #adb5bd;
+			border-radius: rem(16) / 2;
+
+			@include transition(transform .15s ease-in-out, $forms-transition);
+		}
+	}
+
+	.custom-control-input:checked ~ .custom-control-label {
+		&::after {
+			background-color: $white;
+			transform: translateX(rem(12));
+		}
+	}
+
+	.custom-control-input:disabled {
+		&:checked ~ .custom-control-label::before {
+			background-color: $control-indicator-checked-disabled-bg;
+		}
+	}
+}
+
+.custom-control-label::before,
+.custom-file-label,
+.custom-select {
+	@include transition($forms-transition);
+}
