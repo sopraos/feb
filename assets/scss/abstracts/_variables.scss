@@ -14,14 +14,73 @@
 // ==|========================================================================
 $white:					#fff !default;
 $black:					#000 !default;
+$light:					#f4f4f4 !default;
+$grey:					#b8c2cc !default;
+$red: 					#e3342f !default;
+$orange: 				#f6993f !default;
+$green: 				#38c172 !default;
+$blue: 					#3490dc !default;
+$blue-lighter: 	#bcdefa !default;
+
+$primary:				$blue !default;
+$secondary:			$black !default;
+$success: 			$green !default;
+$warning: 			$orange !default;
+$danger:				$red !default;
+$dark:				#343a40 !default;
+
+$colors: () !default;
+$colors: map-merge(
+(
+	"blue":				$blue,
+	"red":        $red,
+	"orange":     $orange,
+	"green":      $green,
+	"white":      $white,
+	"gray":       $grey,
+),
+$colors
+);
+
+$theme-colors: () !default;
+$theme-colors: map-merge(
+(
+	"primary":    $primary,
+	"secondary":  $secondary,
+	"success":    $success,
+	"warning":    $warning,
+	"danger":     $danger,
+	"info":       $blue-lighter,
+	"light":      $light,
+	"dark":       $dark
+),
+$theme-colors
+);
+
+$theme-color-interval:		8% !default;
+
+// La valeur de luminosité mk qui détermine quand la luminosité de la couleur change de "sombre" à "lumière". Les valeurs acceptables sont comprises entre 0 et 255.
+$mk-contrasted-threshold:	150 !default;
+
+// Personnalisez les couleurs de texte claires et sombres à utiliser dans notre fonction de contraste des couleurs MK.
+$mk-text-dark:	#212529 !default;
+$mk-text-light:		$white !default;
 
 // *.
 // ==|========================================================================
+
+// Bordure
+$border-width:		2px !default;
+$border-color:	#e5e5e5 !default;
+
+$border-radius:		4 !default;
 
 // 2. Typographie
 // ==|========================================================================
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+
+$font-size-base:			16 !default;
 
 // 4. Grille
 // ==|========================================================================

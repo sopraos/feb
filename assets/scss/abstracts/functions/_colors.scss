@@ -1,0 +1,33 @@
+// Couleurs
+// ==|====================
+
+// Contraste de couleur
+@function color-mk($color) {
+	$r: red($color);
+	$g: green($color);
+	$b: blue($color);
+
+	$mk: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+	@if ($mk >= $mk-contrasted-threshold) {
+		@return $mk-text-dark;
+	}
+
+	@else {
+		@return $mk-text-light;
+	}
+}
+
+// Récupérer les cartes de couleur Sass
+@function theme-color($key: "primary") {
+	@return map-get($theme-colors, $key);
+}
+
+// Demander un niveau de couleur de thème
+@function theme-color-level($color-name: "primary", $level: 0) {
+	$color: theme-color($color-name);
+	$color-base: if($level > 0, $black, $white);
+	$level: abs($level);
+
+	@return mix($color-base, $color, $level * $theme-color-interval);
+}
