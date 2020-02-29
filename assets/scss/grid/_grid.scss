@@ -1,0 +1,34 @@
+/* ==|====================
+	 Grille
+	 ======================= */
+
+// Container widths
+.container {
+	@include container();
+	@include container-max-widths();
+}
+
+// Fluid container
+.container-fluid {
+	@include container();
+}
+
+// Row
+.row {
+	@include row();
+}
+
+.no-gutters {
+	margin-right: 0;
+	margin-left: 0;
+
+	> .col,
+	> [class*="col-"] {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+// Colonnes
+// Modèles communs pour les petites et grandes colonnes de la grille
+@include grid-columns();

@@ -26,5 +26,28 @@ $font-family-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "
 // 4. Grille
 // ==|========================================================================
 
+// Points d’arrêt de grille
+// Définir les dimensions minimales auxquelles votre mise en page va changer, adaptation à différentes tailles d'écran, pour une utilisation dans les media queries.
+$grid-breakpoints: (
+xs: 0,
+s: 576px,
+m: 768px,
+l: 992px,
+xl: 1200px
+) !default;
+
+// Définissez la largeur maximale de `.container` pour différentes tailles d'écran.
+$container-max-widths: (
+s: 540px,
+m: 720px,
+l: 960px,
+xl: 1140px
+) !default;
+
+// Définissez le nombre de colonnes et spécifiez la largeur des gouttières.
+$grid-columns:			12 !default;
+$grid-gutter-width:	30px !default;
+$grid-row-columns:	6 !default;
+
 // Utilities
 // ==|========================================================================
