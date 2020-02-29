@@ -1,0 +1,84 @@
+// Base
+//==|====================
+
+// Remoukate
+//==|====================
+button,
+input,
+optgroup,
+select,
+textarea {
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+textarea {
+	overflow: auto;
+	resize: vertical;
+}
+
+span {
+	font-weight: inherit;
+}
+
+// Images et contenu
+img {
+	vertical-align: middle;
+	border-style: none;
+	max-width: 100%;
+	height: auto;
+}
+
+svg {
+	overflow: hidden;
+	vertical-align: middle;
+}
+
+// Tables
+table {
+	border-collapse: collapse;
+}
+
+th {
+	text-align: inherit;
+	font-weight: 700;
+}
+
+//
+p {
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
+
+// Body
+body {
+	font-family: $font-family-sans-serif;
+	font-size: rem($font-size-base);
+	font-weight: $font-weight-normal;
+	line-height: $line-height-base;
+	color: $body-color;
+	text-align: left;
+	background-color: $white;
+}
+
+// Liens
+a {
+	color: $link-color;
+	text-decoration: $link-decoration;
+	background-color: transparent;
+
+	@include hover {
+		color: $link-hover-color;
+		text-decoration: $link-hover-decoration;
+	}
+}
+
+// Button
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled),
+button:not(:disabled) {
+	cursor: pointer;
+}
