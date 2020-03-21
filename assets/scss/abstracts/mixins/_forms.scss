@@ -1,7 +1,7 @@
 // Mixin - Forms
 // ==|====================
 
-@mixin form-control-focus() {
+@mixin form-input-focus() {
 	&:focus {
 		outline: 0;
 		border-color: $input-focus-border-color;

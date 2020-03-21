@@ -1,6 +1,7 @@
 // Formulaires
 //==|====================
-.form-control {
+.form-input,
+.form-select {
 	display: block;
 	width: 100%;
 	height: $input-height;
@@ -10,7 +11,6 @@
 	line-height: $input-line-height;
 	color: $input-color;
 	background-color: $input-bg;
-	background-color: white;
 	background-clip: padding-box;
 	border: $input-border-width solid $input-border-color;
 
@@ -26,7 +26,7 @@
 		text-shadow: 0 0 0 $input-color;
 	}
 
-	@include form-control-focus();
+	@include form-input-focus();
 
 	// Placeholder
 	&::placeholder {
@@ -41,34 +41,31 @@
 	}
 }
 
-select.form-control {
-	&:focus::-ms-value {
-		color: $input-color;
-		background-color: $input-bg;
-	}
-}
-
-.form-control-file,
-.form-control-range {
+.form-input-file,
+.form-input-range {
 	display: block;
 	width: 100%;
 }
 
-// Labels
 label,
 .label {
 	display: inline-block;
 	margin-bottom: rem(8);
 }
 
-select.form-control {
+select.form-select {
+	&:focus::-ms-value {
+		color: $input-color;
+		background-color: $input-bg;
+	}
+
 	&[size],
 	&[multiple] {
 		height: auto;
 	}
 }
 
-textarea.form-control {
+textarea.form-input {
 	height: auto;
 }
 
@@ -80,4 +77,43 @@ textarea.form-control {
 .form-text {
 	display: block;
 	margin-top: $form-text-margin-top;
+}
+
+// Checkboxes and radios
+//
+// Indent the labels to position radios/checkboxes as hanging controls.
+
+.form-check {
+	position: relative;
+	display: block;
+	padding-left: $form-check-input;
+}
+
+.form-check-input {
+	position: absolute;
+	margin-top: $form-check-input-margin-y;
+	margin-left: -$form-check-input;
+
+	&[disabled] ~ .form-check-label,
+	&:disabled ~ .form-check-label {
+		color: $text-muted;
+	}
+}
+
+.form-check-label {
+	margin-bottom: 0;
+}
+
+.form-check-inline {
+	display: inline-flex;
+	align-items: center;
+	padding-left: 0;
+	margin-right: $form-check-inline-margin-x;
+
+	.form-check-input {
+		position: static;
+		margin-top: 0;
+		margin-right: $form-check-inline-input-margin-x;
+		margin-left: 0;
+	}
 }

@@ -26,3 +26,15 @@
 	border-top-left-radius: rem($radius);
 	border-bottom-left-radius: rem($radius);
 }
+
+// Transition
+// ==|====================
+@mixin transition($transition...) {
+	@if length($transition) == 0 {
+		transition: $transition-base;
+	}
+
+	@else {
+		transition: $transition;
+	}
+}

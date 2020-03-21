@@ -1,0 +1,94 @@
+// Buttons
+//==|====================
+
+.button {
+	display: inline-block;
+	font-weight: $button-font-weight;
+	color: $body-color;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	user-select: none;
+	background-color: transparent;
+	border: $button-border-width solid transparent;
+
+	@include button-size($button-padding-y, $button-padding-x, $button-font-size, $button-line-height, $button-border-radius);
+	@include transition($button-transition);
+
+	@include hover() {
+		color: $body-color;
+		text-decoration: none;
+	}
+
+	&:focus,
+	&.focus {
+		outline: 0;
+	}
+
+	&.disabled,
+	&:disabled {
+		cursor: not-allowed;
+		opacity: $button-disabled-opacity;
+	}
+
+	&:not(:disabled):not(.disabled) {
+		cursor: pointer;
+	}
+
+	// Icons Svg
+	&.icon-svg,
+	svg {
+		fill: currentColor;
+		width: rem(16);
+		margin-right: rem(8);
+	}
+}
+
+a.button.disabled,
+fieldset:disabled a.button {
+	pointer-events: none;
+}
+
+// Close
+button.close {
+	padding: 0;
+	background-color: transparent;
+	border: 0;
+	appearance: none;
+}
+
+.close {
+	float: right;
+	font-size: $close-font-size;
+	font-weight: $close-font-weight;
+	line-height: 1;
+	color: $close-color;
+	text-shadow: $close-text-shadow;
+	opacity: .5;
+
+	// Override <a>'s hover style
+	@include hover() {
+		color: $close-color;
+		text-decoration: none;
+	}
+
+	&:not(:disabled):not(.disabled) {
+		@include hover-focus() {
+			opacity: .75;
+		}
+	}
+}
+
+// Boutons alternatifs
+
+@each $color, $value in $theme-colors {
+	.button-#{$color} {
+		@include button-variant($value, $value);
+	}
+}
+
+@each $color, $value in $theme-colors {
+	.button-outline-#{$color} {
+		@include button-outline-variant($value);
+	}
+}
