@@ -11,6 +11,7 @@
 //		3-2. Formulaires
 //		3-3. Boutons
 //		3-4. Alerts
+//		3-5. Cards
 //	4. Grille
 //	.  Utilities
 
@@ -191,11 +192,39 @@ $button-disabled-opacity:		.65 !default;
 
 // 3-4. Alerts
 // ==|========================
+// 3-4. Alerts
+// ==|========================
+$alert-padding-y:					rem(12) !default;
+$alert-padding-x:					rem(20) !default;
+$alert-margin-bottom:			rem(16) !default;
+
+$alert-border-width:			$border-width !default;
+$alert-border-radius:			$border-radius !default;
+$alert-link-font-weight:	$font-weight-bold !default;
+
+$alert-bg-level:					-10 !default;
+$alert-border-level:      -9 !default;
+$alert-color-level:       6 !default;
+
 // Close
 $close-font-size:					rem($font-size-base) * 1.5 !default;
 $close-font-weight:				$font-weight-bold !default;
 $close-color:							$black !default;
 $close-text-shadow:				0 rem(1) 0 $white !default;
+
+// 3-5. Cards
+// ==|========================
+$card-spacer-y:				.75rem !default;
+$card-spacer-x:				rem(20) !default;
+
+$card-border-width:   $border-width !default;
+$card-border-radius:	$border-radius !default;
+$card-border-color:		rgba($black, .125) !default;
+
+$card-color:					null !default;
+$card-bg:							$white !default;
+
+$card-inner-border-radius:	calc(#{rem($card-border-radius)} - #{$card-border-width}) !default;
 
 // 4. Grille
 // ==|========================================================================
@@ -225,3 +254,4 @@ $grid-row-columns:	6 !default;
 
 // Utilities
 // ==|========================================================================
+$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;

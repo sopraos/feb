@@ -4,10 +4,11 @@
 
 @import "mixins/utilities";
 @import "mixins/hover";
-@import "mixins/buttons";
 
 // Components
 @import "mixins/forms";
+@import "mixins/buttons";
+@import "mixins/alert";
 
 // Skins
 @import "mixins/skin";
