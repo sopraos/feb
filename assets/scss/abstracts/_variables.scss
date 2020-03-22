@@ -101,6 +101,10 @@ $link-hover-decoration:	underline !default;
 // Text
 $text-muted:            #6c757d !default;
 
+// Transition
+$transition-base:		all .2s ease-in-out !default;
+$transition-fade:		opacity .15s linear !default;
+
 // 2. Typographie
 // ==|========================================================================
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
@@ -192,8 +196,7 @@ $button-disabled-opacity:		.65 !default;
 
 // 3-4. Alerts
 // ==|========================
-// 3-4. Alerts
-// ==|========================
+
 $alert-padding-y:					rem(12) !default;
 $alert-padding-x:					rem(20) !default;
 $alert-margin-bottom:			rem(16) !default;
