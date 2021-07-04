@@ -90,8 +90,9 @@ let settings = {
 	allowedHosts: [], //.localhost
 	entry: {
 		'css/feb': './assets/scss/feb.scss',
+		'css/docs': './assets/docs.scss',
 	},
-	deleteUnusedEntries: ['css/feb'],
+	deleteUnusedEntries: ['css/feb', 'css/docs'],
 };
 
 // Le répertoire du projet où les ressources compilées seront stockées
