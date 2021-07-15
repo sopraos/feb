@@ -10,9 +10,17 @@
 // UTILS CORE - Configuration et aides
 // ===================================================
 @import 'abstracts/abstracts';
+@import 'grid/grid';
 
 // COMPONENTS - Composants
 // ===================================================
+@import 'component/base';
+@import 'component/tables';
+@import 'component/forms';
+@import 'component/buttons';
+@import 'component/alert';
+@import 'component/cards';
+@import 'component/utilities';
 
 // LAYOUT - Disposition
 // ===================================================

@@ -1,0 +1,144 @@
+// Base
+//==|====================
+
+// Remoukate
+//==|====================
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:root {
+	@each $color, $value in $colors {
+		--#{$variable-prefix}#{$color}: #{$value};
+	}
+
+	@each $color, $value in $theme-colors {
+		--#{$variable-prefix}#{$color}: #{$value};
+	}
+
+	--#{$variable-prefix}font-sans-serif: #{inspect($font-family-sans-serif)};
+	--#{$variable-prefix}font-monospace: #{inspect($font-family-monospace)};
+	--#{$variable-prefix}gradient: #{$gradient};
+}
+
+body {
+	margin: 0; // 1
+	font-family: $font-family-base;
+	font-size: rem($font-size-base);
+	font-weight: $font-weight-base;
+	line-height: $line-height-base;
+	color: $body-color;
+	text-align: $body-text-align;
+	background-color: $body-bg; // 2
+	-webkit-text-size-adjust: 100%; // 3
+	-webkit-tap-highlight-color: rgba($black, 0);
+}
+
+hr {
+	margin: $hr-margin-y 0;
+	color: $hr-color;
+	background-color: currentColor;
+	border: 0;
+	opacity: $hr-opacity;
+}
+
+hr:not([size]) {
+	height: $hr-height; // 2
+}
+
+// Typographie
+%heading {
+	margin-top: 0; // 1
+	margin-bottom: $headings-margin-bottom;
+	font-family: $headings-font-family;
+	font-style: $headings-font-style;
+	font-weight: $headings-font-weight;
+	line-height: $headings-line-height;
+	color: $headings-color;
+}
+
+h1 {
+	@extend %heading;
+
+	font-size: rem($h1-font-size);
+}
+
+h2 {
+	@extend %heading;
+
+	font-size: rem($h2-font-size);
+}
+
+h3 {
+	@extend %heading;
+
+	font-size: rem($h3-font-size);
+}
+
+h4 {
+	@extend %heading;
+
+	font-size: rem($h4-font-size);
+}
+
+h5 {
+	@extend %heading;
+
+	font-size: rem($h5-font-size);
+}
+
+h6 {
+	@extend %heading;
+
+	font-size: rem($h6-font-size);
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: $paragraph-margin-bottom;
+}
+
+// Liens
+a {
+	color: $link-color;
+	text-decoration: $link-decoration;
+
+	&:hover {
+		color: $link-hover-color;
+		text-decoration: $link-hover-decoration;
+	}
+}
+
+a:not([href]):not([class]) {
+	&,
+	&:hover {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+// Images
+img,
+svg {
+	vertical-align: middle;
+}
+
+// Button
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: button;
+
+	&:not(:disabled) {
+		cursor: pointer;
+	}
+}
+
+// Tables
+table {
+	caption-side: bottom;
+	border-collapse: collapse;
+}

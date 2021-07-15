@@ -1,0 +1,50 @@
+/* ==|====================
+	 Grille
+	 ======================= */
+
+// Container
+.container,
+.container-fluid {
+	@include container();
+}
+
+// Containers responsive de 100 % de large jusqu'à un point d'arrêt
+@each $breakpoint, $container-max-width in $container-max-widths {
+	.container-#{$breakpoint} {
+		@extend .container-fluid;
+	}
+
+	@include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+		%responsive-container-#{$breakpoint} {
+			max-width: $container-max-width;
+		}
+
+		// Étendre chaque point d'arrêt inférieur ou égal au point d'arrêt actuel
+		$extend-breakpoint: true;
+
+		@each $name, $width in $grid-breakpoints {
+			@if ($extend-breakpoint) {
+				.container#{breakpoint-infix($name, $grid-breakpoints)} {
+					@extend %responsive-container-#{$breakpoint};
+				}
+
+				// Une fois le point d'arrêt actuel atteint, arrêtez l'extension
+				@if ($breakpoint == $name) {
+					$extend-breakpoint: false;
+				}
+			}
+		}
+	}
+}
+
+// Row
+.row {
+	@include row();
+
+	> * {
+		@include col-ready();
+	}
+}
+
+// Styles communs pour les petites et grandes colonnes de grille
+@include grid-columns();

@@ -1,0 +1,81 @@
+// Tables
+//==|====================
+
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+	border-color: inherit;
+	border-style: solid;
+	border-width: 0;
+}
+
+.table {
+	--#{$variable-prefix}table-bg: #{$table-bg};
+	--#{$variable-prefix}table-accent-bg: #{$table-accent-bg};
+	--#{$variable-prefix}table-striped-color: #{$table-striped-color};
+	--#{$variable-prefix}table-striped-bg: #{$table-striped-bg};
+
+	width: 100%;
+	margin-bottom: $spacer;
+	color: $table-color;
+	vertical-align: $table-cell-vertical-align;
+	border-color: $table-border-color;
+
+	> :not(caption) > * > * {
+		padding: rem($table-cell-padding-y) rem($table-cell-padding-x);
+		background-color: var(--#{$variable-prefix}table-bg);
+		border-bottom-width: $table-border-width;
+		box-shadow: inset 0 0 0 9999px var(--#{$variable-prefix}table-accent-bg);
+	}
+
+	> tbody {
+		vertical-align: inherit;
+	}
+
+	> thead {
+		vertical-align: bottom;
+	}
+
+	> :not(:last-child) > :last-child > * {
+		border-bottom-color: currentColor;
+	}
+}
+
+.table-bordered {
+	> :not(caption) > * {
+		border-width: $table-border-width 0;
+
+		> * {
+			border-width: 0 $table-border-width;
+		}
+	}
+}
+
+.table-sm {
+	> :not(caption) > * > * {
+		padding: rem($table-cell-padding-y-sm) rem($table-cell-padding-x-sm);
+	}
+}
+
+.table-striped {
+	> tbody > tr:nth-of-type(#{odd}) {
+		--#{$variable-prefix}table-accent-bg: var(--#{$variable-prefix}table-striped-bg);
+
+		color: var(--#{$variable-prefix}table-striped-color);
+	}
+}
+
+// Tableaux responsive
+@each $breakpoint in map-keys($grid-breakpoints) {
+	$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+	@include media-breakpoint-down($breakpoint) {
+		.table-responsive#{$infix} {
+			overflow-x: auto;
+			-webkit-overflow-scrolling: touch;
+		}
+	}
+}

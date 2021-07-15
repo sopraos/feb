@@ -1,0 +1,106 @@
+// Mixins - Grille Framework
+// ==|====================
+// @use 'sass:math';
+@use 'sass:math';
+
+// Système de grille
+// ==|====================
+
+@mixin container($gutter: $container-padding-x) {
+	width: 100%;
+	padding-right: var(--#{$variable-prefix}gutter-x, #{$gutter});
+	padding-left: var(--#{$variable-prefix}gutter-x, #{$gutter});
+	margin-right: auto;
+	margin-left: auto;
+}
+
+// Row
+@mixin row($gutter: $grid-gutter-width) {
+	--#{$variable-prefix}gutter-x: #{$gutter};
+	--#{$variable-prefix}gutter-y: 0;
+
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: calc(var(--#{$variable-prefix}gutter-y) * -1);
+	margin-right: calc(var(--#{$variable-prefix}gutter-x) * -.5);
+	margin-left: calc(var(--#{$variable-prefix}gutter-x) * -.5);
+}
+
+@mixin col-ready($gutter: $grid-gutter-width) {
+	box-sizing: if(variable-exists(include-column-box-sizing) and $include-column-box-sizing, border-box, null);
+	flex-shrink: 0;
+	width: 100%;
+	max-width: 100%;
+	padding-right: calc(var(--#{$variable-prefix}gutter-x) * .5);
+	padding-left: calc(var(--#{$variable-prefix}gutter-x) * .5);
+	margin-top: var(--#{$variable-prefix}gutter-y);
+}
+
+@mixin col($size: false, $columns: $grid-columns) {
+	@if $size {
+		flex: 0 0 auto;
+		width: math.percentage(math.div($size, $columns));
+		// width: percentage(divide($size, $columns));
+	}
+
+	@else {
+		flex: 1 1 0;
+		max-width: 100%;
+	}
+}
+
+@mixin col-auto() {
+	flex: 0 0 auto;
+	width: auto;
+}
+
+// Row colonnes
+@mixin row-cols($count) {
+	> * {
+		flex: 0 0 auto;
+		width: divide(100%, $count);
+	}
+}
+
+// Génération de grille de framework
+@mixin grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+	@each $breakpoint in map-keys($breakpoints) {
+		$infix: breakpoint-infix($breakpoint, $breakpoints);
+
+		@include media-breakpoint-up($breakpoint, $breakpoints) {
+			.col#{$infix} {
+				flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+			}
+
+			.row-cols#{$infix}-auto > * {
+				@include col-auto();
+			}
+
+			@if $grid-row-columns > 0 {
+				@for $i from 1 through $grid-row-columns {
+					.row-cols#{$infix}-#{$i} {
+						@include row-cols($i);
+					}
+				}
+			}
+		}
+	}
+
+	@each $breakpoint in map-keys($breakpoints) {
+		$infix: breakpoint-infix($breakpoint, $breakpoints);
+
+		@include media-breakpoint-up($breakpoint, $breakpoints) {
+			.col#{$infix}-auto {
+				@include col-auto();
+			}
+
+			@if $columns > 0 {
+				@for $i from 1 through $columns {
+					.col#{$infix}-#{$i} {
+						@include col($i, $columns);
+					}
+				}
+			}
+		}
+	}
+}

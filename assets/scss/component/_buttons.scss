@@ -1,0 +1,56 @@
+// Buttons
+//==|====================
+.button {
+	display: inline-block;
+	padding: rem($button-padding-y) rem($button-padding-x);
+	font-size: rem($button-font-size);
+	font-family: $button-font-family;
+	font-weight: $button-font-weight;
+	line-height: $button-line-height;
+	color: $body-color;
+	text-align: center;
+	text-decoration: if(underline == none, null, none);
+	white-space: null;
+	vertical-align: middle;
+	cursor: pointer;
+	user-select: none;
+	background-color: transparent;
+	border: $button-border-width solid transparent;
+
+	@include border-radius(rem($border-radius));
+	@include transition($button-transition);
+
+	&:hover {
+		color: $body-color;
+		text-decoration: null;
+	}
+
+	&:disabled,
+	&.disabled,
+	fieldset:disabled & {
+		pointer-events: none;
+		opacity: .25;
+	}
+
+	// Icons Svg
+	&.icon-svg,
+	svg {
+		fill: currentColor;
+		width: rem(16);
+		margin-right: rem(8);
+	}
+}
+
+// Buttons variant
+@each $color, $value in $theme-colors {
+	.button-#{$color} {
+		@include button-variant($value, $value);
+	}
+}
+
+// Buttons variant
+@each $color, $value in $theme-colors {
+	.button-outline-#{$color} {
+		@include button-outline-variant($value);
+	}
+}

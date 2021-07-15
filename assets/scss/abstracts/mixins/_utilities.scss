@@ -1,0 +1,109 @@
+// Mixins - Utilitaires
+//==|====================
+
+// Border radius
+// ==|====================
+// Fonction d'assistance pour remplacer les valeurs négatives par 0
+@function valid-radius($radius) {
+	$return: ();
+
+	@each $value in $radius {
+		@if type-of($value) == number {
+			$return: append($return, max($value, 0));
+		}
+
+		@else {
+			$return: append($return, $value);
+		}
+	}
+
+	@return $return;
+}
+
+@mixin border-radius($radius: $border-radius) {
+	// border-radius: valid-radius(rem($radius));
+	border-radius: valid-radius($radius);
+}
+
+@mixin border-top-radius($radius: $border-radius) {
+	border-top-left-radius: valid-radius(rem($radius));
+	border-top-right-radius: valid-radius(rem($radius));
+}
+
+@mixin border-end-radius($radius: $border-radius) {
+	border-top-right-radius: valid-radius(rem($radius));
+	border-bottom-right-radius: valid-radius(rem($radius));
+}
+
+@mixin border-bottom-radius($radius: $border-radius) {
+	border-bottom-right-radius: valid-radius(rem($radius));
+	border-bottom-left-radius: valid-radius(rem($radius));
+}
+
+@mixin border-start-radius($radius: $border-radius) {
+	border-top-left-radius: valid-radius(rem($radius));
+	border-bottom-left-radius: valid-radius(rem($radius));
+}
+
+@mixin border-top-start-radius($radius: $border-radius) {
+	border-top-left-radius: valid-radius(rem($radius));
+}
+
+@mixin border-top-end-radius($radius: $border-radius) {
+	border-top-right-radius: valid-radius(rem($radius));
+}
+
+@mixin border-bottom-end-radius($radius: $border-radius) {
+	border-bottom-right-radius: valid-radius(rem($radius));
+}
+
+@mixin border-bottom-start-radius($radius: $border-radius) {
+	border-bottom-left-radius: valid-radius($radius);
+}
+
+// Transition
+// ==|====================
+@mixin transition($transition...) {
+	@if length($transition) == 0 {
+		$transition: $transition-base;
+	}
+
+	@if length($transition) > 1 {
+		@each $value in $transition {
+			@if $value == null or $value == none {
+				@warn "Le mot-clé 'none' ou 'null' doit être utilisé comme un seul argument.";
+			}
+		}
+	}
+
+	@if nth($transition, 1) != null {
+		transition: $transition;
+	}
+
+	@if nth($transition, 1) != null and nth($transition, 1) != none {
+		@media (prefers-reduced-motion: reduce) {
+			transition: none;
+		}
+	}
+}
+
+// Hover
+// ==|====================
+@mixin hover {
+	&:hover { @content; }
+}
+
+@mixin hover-focus {
+	&:hover,
+	&:focus {
+		@content;
+	}
+}
+
+@mixin hover-focus-active {
+	&:hover,
+	&:focus,
+	&:active {
+		@content;
+	}
+}

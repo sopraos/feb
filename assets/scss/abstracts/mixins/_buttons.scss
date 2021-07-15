@@ -1,0 +1,95 @@
+// Mixins - Buttons
+//==|====================
+@mixin button-variant(
+	$background,
+	$border,
+	$color: color-contrast($background),
+	$hover-background: if($color == $color-contrast-light, shade-color($background, $button-hover-bg-shade), tint-color($background, $button-hover-bg-tint)),
+	$hover-border: if($color == $color-contrast-light, shade-color($border, $button-hover-border-shade), tint-color($border, $button-hover-border-tint)),
+	$hover-color: color-contrast($hover-background),
+	$active-background: if($color == $color-contrast-light, shade-color($background, $button-active-bg-shade), tint-color($background, $button-active-bg-tint)),
+	$active-border: if($color == $color-contrast-light, shade-color($border, $button-active-border-shade), tint-color($border, $button-active-border-tint)),
+	$active-color: color-contrast($active-background),
+	$disabled-background: $background,
+	$disabled-border: $border,
+	$disabled-color: color-contrast($disabled-background)
+) {
+	color: $color;
+
+	@include gradient-bg($background);
+
+	border-color: $border;
+
+	@include hover {
+		color: $hover-color;
+
+		@include gradient-bg($hover-background);
+
+		border-color: $hover-border;
+	}
+
+	&:focus {
+		color: $hover-color;
+
+		@include gradient-bg($hover-background);
+
+		border-color: $hover-border;
+		box-shadow: 0 0 0 rem($button-focus-width) rgba(mix($color, $border, 15%), .5);
+	}
+
+	&:active,
+	&.active {
+		color: $active-color;
+		background-color: $active-background;
+		border-color: $active-border;
+
+		&:focus {
+			box-shadow: 0 0 0 rem($button-focus-width) rgba(mix($color, $border, 15%), .5);
+		}
+	}
+
+	&:disabled,
+	&.disabled {
+		color: $disabled-color;
+		background-color: $disabled-background;
+		border-color: $disabled-border;
+	}
+}
+
+@mixin button-outline-variant(
+	$color,
+	$color-hover: color-contrast($color),
+	$active-background: $color,
+	$active-border: $color,
+	$active-color: color-contrast($active-background)
+) {
+	color: $color;
+	border-color: $color;
+
+	@include hover {
+		color: $color-hover;
+		background-color: $active-background;
+		border-color: $active-border;
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 rem($button-focus-width) rgba($color, .5);
+	}
+
+	&:active,
+	&.active {
+		color: $active-color;
+		background-color: $active-background;
+		border-color: $active-border;
+
+		&:focus {
+			box-shadow: 0 0 0 rem($button-focus-width) rgba($color, .5);
+		}
+	}
+
+	&:disabled,
+	&.disabled {
+		color: $color;
+		background-color: transparent;
+	}
+}

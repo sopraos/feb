@@ -1,3 +1,14 @@
 /* ==|====================
 	 Mixins
 	 ======================= */
+
+@import "mixins/utilities";
+@import "mixins/buttons";
+@import "mixins/alert";
+
+// Skins
+@import "mixins/skin";
+
+// Framework
+@import "mixins/breakpoints";
+@import "mixins/grid-framework";
