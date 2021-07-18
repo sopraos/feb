@@ -11,9 +11,9 @@ label,
 .form-control {
 	display: block;
 	width: 100%;
-	padding: rem($input-padding-y) rem($input-padding-x);
+	padding: $input-padding-y $input-padding-x;
 	font-family: $input-font-family;
-	font-size: rem($input-font-size);
+	font-size: $input-font-size;
 	font-weight: $input-font-weight;
 	line-height: $input-line-height;
 	color: $input-color;
@@ -70,10 +70,10 @@ textarea {
 .form-select {
 	display: block;
 	width: 100%;
-	padding: rem($form-select-padding-y) rem($form-select-indicator-padding) rem($form-select-padding-y) rem($form-select-padding-x);
+	padding: $form-select-padding-y $form-select-indicator-padding $form-select-padding-y $form-select-padding-x;
 	-moz-padding-start: subtract($form-select-padding-x, 3px);
 	font-family: $form-select-font-family;
-	font-size: rem($form-select-font-size);
+	font-size: $form-select-font-size;
 	font-weight: $form-select-font-weight;
 	line-height: $form-select-line-height;
 	color: $form-select-color;
@@ -92,12 +92,12 @@ textarea {
 	&:focus {
 		border-color: $form-select-focus-border-color;
 		outline: 0;
-		box-shadow: 0 0 0 rem(4) rgba($component-active-bg, .25);
+		//box-shadow: 0 0 0 rem(4) rgba($component-active-bg, .25);
 	}
 
 	&[multiple],
 	&[size]:not([size="1"]) {
-		padding-right: rem($form-select-padding-x);
+		padding-right: $form-select-padding-x;
 		background-image: none;
 	}
 
@@ -111,4 +111,89 @@ textarea {
 		color: transparent;
 		text-shadow: 0 0 0 $form-select-color;
 	}
+}
+
+// Form Check
+.form-check {
+	display: block;
+	min-height: rem($form-check-min-height);
+	padding-left: $form-check-padding-start;
+	margin-bottom: $form-check-margin-bottom;
+
+	.form-check-input {
+		float: left;
+		margin-left: $form-check-padding-start * -1;
+	}
+}
+
+.form-check-input {
+	width: $form-check-input-width;
+	height: $form-check-input-width;
+	margin-top: ($line-height-base - $form-check-input-width) * .5;
+	vertical-align: top;
+	background-color: $form-check-input-bg;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	border: $form-check-input-border;
+	appearance: none;
+	color-adjust: exact;
+
+	&[type="checkbox"] {
+		@include border-radius($form-check-input-border-radius);
+	}
+
+	&[type="radio"] {
+		border-radius: $form-check-radio-border-radius;
+	}
+
+	&:active {
+		filter: $form-check-input-active-filter;
+	}
+
+	&:focus {
+		border-color: $form-check-input-focus-border;
+		outline: 0;
+		box-shadow: $form-check-input-focus-box-shadow;
+	}
+
+	&:checked {
+		background-color: $form-check-input-checked-bg-color;
+		border-color: $form-check-input-checked-border-color;
+
+		&[type="checkbox"] {
+			background-image: escape-svg($form-check-input-checked-bg-image);
+		}
+
+		&[type="radio"] {
+			background-image: escape-svg($form-check-radio-checked-bg-image);
+		}
+	}
+
+	&[type="checkbox"]:indeterminate {
+		background-color: $form-check-input-indeterminate-bg-color;
+		border-color: $form-check-input-indeterminate-border-color;
+	}
+
+	&:disabled {
+		pointer-events: none;
+		filter: none;
+		opacity: .5;
+	}
+
+	&[disabled],
+	&:disabled {
+		~ .form-check-label {
+			opacity: .5;
+		}
+	}
+}
+
+.form-check-label {
+	color: null;
+	cursor: null;
+}
+
+@each $state, $data in $form-validation-states {
+	@include form-validation-state($state, $data...);
 }

@@ -2,8 +2,8 @@
 //==|====================
 .button {
 	display: inline-block;
-	padding: rem($button-padding-y) rem($button-padding-x);
-	font-size: rem($button-font-size);
+	padding: $button-padding-y $button-padding-x;
+	font-size: $button-font-size;
 	font-family: $button-font-family;
 	font-weight: $button-font-weight;
 	line-height: $button-line-height;

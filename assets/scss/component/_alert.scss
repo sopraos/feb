@@ -6,7 +6,7 @@
 	margin-bottom: rem($alert-margin-bottom);
 	border: $alert-border-width solid transparent;
 
-	@include border-radius(rem($alert-border-radius));
+	@include border-radius($alert-border-radius);
 }
 
 .alert-link {

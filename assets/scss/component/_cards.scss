@@ -89,7 +89,7 @@
 	border-top: $card-border-width solid $card-border-color;
 
 	&:last-child {
-		@include border-radius(0 0 rem($card-inner-border-radius) rem($card-inner-border-radius));
+		@include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
 	}
 }
 
