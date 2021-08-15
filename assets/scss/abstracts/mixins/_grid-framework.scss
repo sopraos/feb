@@ -83,9 +83,29 @@
 					}
 				}
 			}
+
+			.col#{$infix}-auto {
+				@include col-auto();
+			}
+
+			// Gutters
+			//
+			// Utilisez les utilitaires `.g-*`, `.gx-*` or `.gy-*` pour modifier l'espacement entre les colonnes.
+			@each $key, $value in $gutters {
+				.g#{$infix}-#{$key},
+				.gx#{$infix}-#{$key} {
+					--#{$variable-prefix}gutter-x: #{$value};
+				}
+
+				.g#{$infix}-#{$key},
+				.gy#{$infix}-#{$key} {
+					--#{$variable-prefix}gutter-y: #{$value};
+				}
+			}
 		}
 	}
 
+	// Css grid
 	@each $breakpoint in map-keys($breakpoints) {
 		$infix: breakpoint-infix($breakpoint, $breakpoints);
 
